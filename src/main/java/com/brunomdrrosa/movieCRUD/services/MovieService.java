@@ -23,4 +23,9 @@ public class MovieService {
     public Movie findById(Long id) {
         return repository.findById(id).get();
     }
+
+    @Transactional
+    public Movie addMovie(Movie newMovie) {
+        return repository.saveAndFlush(newMovie);
+    }
 }

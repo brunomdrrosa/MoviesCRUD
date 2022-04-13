@@ -3,10 +3,7 @@ package com.brunomdrrosa.movieCRUD.controllers;
 import com.brunomdrrosa.movieCRUD.entities.Movie;
 import com.brunomdrrosa.movieCRUD.services.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,4 +24,8 @@ public class MovieController {
         return service.findById(id);
     }
 
+    @PostMapping
+    public Movie addMovie(@RequestBody Movie newMovie) {
+        return service.addMovie(newMovie);
+    }
 }
