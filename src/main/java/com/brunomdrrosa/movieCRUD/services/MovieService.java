@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MovieService {
@@ -27,5 +28,11 @@ public class MovieService {
     @Transactional
     public Movie addMovie(Movie newMovie) {
         return repository.saveAndFlush(newMovie);
+    }
+
+    @Transactional
+    public void delete(Long id) {
+        findById(id);
+        repository.deleteById(id);
     }
 }

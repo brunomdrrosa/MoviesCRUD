@@ -3,6 +3,7 @@ package com.brunomdrrosa.movieCRUD.controllers;
 import com.brunomdrrosa.movieCRUD.entities.Movie;
 import com.brunomdrrosa.movieCRUD.services.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,5 +28,11 @@ public class MovieController {
     @PostMapping
     public Movie addMovie(@RequestBody Movie newMovie) {
         return service.addMovie(newMovie);
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Object> deleteMovie(@PathVariable Long id) {
+        service.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }
